@@ -40,3 +40,7 @@ az webapp deployment list-publishing-profiles --name hmecloudwebapp --resource-g
 az ad sp create-for-rbac -n "azureMavenappname" --role Contributor --scopes /subscriptions/dfcf67b5-ae7e-4209-9ff7-96ae03d8c138/resourceGroups/azureMavenAppDeployment 
                             
 							
+=====================================================================================================
+az functionapp deployment source config-zip -g HME -n FucntionAppNuthan --src "D:\sample-az-func.zip"
+7z a -r ../myzip1.zip *
+https://sample-az-func.scm.azurewebsites.net/ZipDeploy
