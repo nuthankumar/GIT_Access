@@ -1,0 +1,40 @@
+SERVER DETAILS
+Server: 104.42.238.90:3389
+Username: nous-cicd
+Password: Test!234
+
+KATALON STUDIO
+cd C:\Users\buildmaster\Downloads\Katalon_Studio_Windows_64-5.3.1\Katalon_Studio_Windows_64-5.3.1
+PATH=C:\Users\buildmaster\AppData\Local\Microsoft\WindowsApps;
+katalon -runMode=console -consoleLog -projectPath="C:\Users\nuthankumarkb\Desktop\HME_Demo-master\HME.prj" -retry=0 -testSuitePath="Test Suites/Regression Test - LIVE - English" -browserType="Chrome"
+EXIT /B 0
+
+cd C:\Users\buildmaster\Downloads\Katalon_Studio_Windows_64-5.3.1\Katalon_Studio_Windows_64-5.3.1
+PATH=C:\Users\buildmaster\AppData\Local\Microsoft\WindowsApps;
+katalon -runMode=console -consoleLog -projectPath="C:\Program Files (x86)\Jenkins\workspace\HME Cloud Tests\CloudTests_Trunk\HME Cloud\HME Cloud\Cloud.prj" -retry=0 -testSuitePath="Test Suites/Regression Test - UAT - English" -browserType="Chrome" EXIT /B 0
+
+
+
+AZURE DEPLOYMENT
+az webapp deployment user set --user-name nuthankumarkb@nousinfo.com --password May@2018
+az webapp deployment source config-local-git --name ztrail --resource-group ztrail
+git remote add azure https://github.com/nuthankumar/nodejsTEST.git
+git commit -m "initial commit"
+git push azure master
+
+AZURE DEPLOYMENT CREATION OF RESOURCES
+az group create --location westeurope --name myResourceGroup
+az appservice plan create --name zhello --resource-group myResourceGroup --sku FREE
+az webapp create --name zhello --resource-group myResourceGroup --plan zhello
+az webapp deployment source config --name zhello --resource-group myResourceGroup --repo-url https://github.com/nuthankumar/nodejs-ZTrail.git --branch master --manual-integration
+azcopy /Source:C:\Users\nuthankumarkb\.jenkins\workspace\ZTrail /Dest:https://nuthan29c4a.blob.core.windows.net/site/repository /DestKey:/adhQktkgOvwSF0h+u1OS3UQQ8w03HIcWhub5X7pkzcwVd1fZDJikbrBsjMEWafFJIXe4ug46/I8CefrwNh6qA== /s
+cp -a /source/. /dest/
+
+XCOPY COMMANDS
+if not exist "C:\Jenkins\Workspace\azcopy" mkdir C:\Jenkins\Workspace\azcopy
+XCOPY C:\Users\nuthankumarkb\workspace\nuthan C:\Jenkins\Workspace\azcopy /S
+cp -a /C:\Users\nuthankumarkb\workspace\nuthan/. /C:\Jenkins\Workspace\azcopy/
+
+AZURE COPY
+azcopy /Source:C:\Users\nuthankumarkb\.jenkins\workspace\ZapTest /Dest:https://nuthan29c4a.blob.core.windows.net/site/repository /DestKey:/adhQktkgOvwSF0h+u1OS3UQQ8w03HIcWhub5X7pkzcwVd1fZDJikbrBsjMEWafFJIXe4ug46/I8CefrwNh6qA== /s
+azcopy /Source:C:\Users\nuthankumarkb\.jenkins\workspace\ZapTest /Dest:https://nuthan29c4a.file.core.windows.net/site/repository /DestKey:/adhQktkgOvwSF0h+u1OS3UQQ8w03HIcWhub5X7pkzcwVd1fZDJikbrBsjMEWafFJIXe4ug46/I8CefrwNh6qA== /s

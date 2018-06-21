@@ -1,0 +1,46 @@
+https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-migrate-on-premises-data?tabs=windows
+http://192.168.30.63/
+https://dev.mysql.com/doc/refman/8.0/en/caching-sha2-pluggable-authentication.html
+https://www.atlassian.com/git/tutorials/install-git
+https://blogs.sap.com/2015/12/15/configuring-jenkins-to-run-a-build-automatically-on-code-push/
+https://www.we45.com/blog/how-to-integrate-zap-into-jenkins-ci-pipeline-we45-blog
+https://codeforgeek.com/2016/04/continuous-integration-deployment-jenkins-node-js/
+https://community.tibco.com/wiki/continuous-integration-and-deployment-jenkins-and-nodejs
+
+IMPORTANT
+https://docs.microsoft.com/en-us/azure/app-service/app-service-deploy-local-git#enable-git-for-you-app
+https://www.netiq.com/communities/cool-solutions/creating-application-client-id-client-secret-microsoft-azure-new-portal/
+
+MAVEN SONAR PROPERTIES
+sonar.projectKey=TEST-PROJECT
+sonar.projectName=TEST-PROJECT
+sonar.projectVersion=1.0
+sonar.sources=src/main/java/
+sonar.language=java
+sonar.java.binaries=**/target/classes  
+
+NODEJS SONAR PROPERTIES
+sonar.projectKey=sonar-js
+sonar.projectName=sonar-js
+sonar.projectVersion=0.0.1
+sonar.sources=src
+sonar.tests=test
+sonar.language=js
+sonar.profile=node
+sonar.dynamicAnalysis=reuseReports
+sonar.javascript.jstest.reportsPath=reports
+sonar.javascript.lcov.reportPath=reports/coverage.lcov
+
+JAVA END TASK COMMANDS
+taskkill /f /im jqs.exe
+taskkill /f /im javaw.exe
+taskkill /f /im java.exe
+
+NETSTAT COMMANDS
+netstat -an |find /i "listening"
+netstat -a -n -o
+taskkill /f /fi /pid 2712
+
+Nuthan Kumar K B
+Username: nous-nuthan
+Password: NH5B&1ek^Vwxt6v4

@@ -1,0 +1,42 @@
+AZURE DEPLOYMENT FOR MAVEN DEPLOYMENT
+create a resource group for deployment
+az group create --location "East US" --name azureMavenAppDeployment
+
+Create a plan for deployment with the resource
+az appservice plan create --name azureMavenAppDeployment-plan --resource-group azureMavenAppDeployment --sku FREE
+
+create a webapp registry with resourcegroup and plan
+az webapp create --name azureMavenappname --resource-group azureMavenAppDeployment --plan azureMavenAppDeployment-plan
+
+configure the environment for the application to run
+az webapp config set --name azureMavenappname --resource-group azureMavenAppDeployment --java-container TOMCAT --java-version 1.8.0_73  --java-container-version 8.5
+
+get the profile details to add it on to application
+az webapp deployment list-publishing-profiles --name azureMavenappname --resource-group azureMavenAppDeployment --query "[?publishMethod=='FTP'].{URL:publishUrl, Username:userName,Password:userPWD}"
+
+make changes with the information into settings.xml
+mvn install -s az-settings.xml
+
+browse your deployment
+az webapp browse --name azureMavenappname --resource-group azureMavenAppDeployment
+
+make changes and do a deployment
+
+mvn clean package
+mvn install -s az-settings.xml
+
+az webapp deployment user set --user-name <username> --password <password>
+=====================================================================================================
+AZURE COMMANDS 
+
+az account set --subscription Enterprise
+az webapp config container show --name hmecloudwebapp --resource-group HME
+az webapp config appsettings list --name hmecloudwebapp --resource-group HME
+az webapp browse --name hmecloudwebapp --resource-group HME
+az webapp deployment source show --name hmecloudwebapp --resource-group HME
+az webapp deployment source sync --name hmecloudwebapp --resource-group HME
+az webapp deployment list-publishing-profiles --name hmecloudwebapp --resource-group HME --query "[?publishMethod=='FTP'].{URL:publishUrl, Username:userName,Password:userPWD}"
+
+az ad sp create-for-rbac -n "azureMavenappname" --role Contributor --scopes /subscriptions/dfcf67b5-ae7e-4209-9ff7-96ae03d8c138/resourceGroups/azureMavenAppDeployment 
+                            
+							

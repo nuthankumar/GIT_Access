@@ -1,0 +1,8 @@
+=============DOCKER======================
+docker --version
+docker info
+docker rm 4b29b0763c50
+docker container ls --all
+docker stop --time 10 mystifying_villani
+docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
+docker run --name jenkins -p 8080:8080 jenkinsci/blueocean
