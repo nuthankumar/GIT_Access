@@ -1,0 +1,18 @@
+# mysql -u root -p
+
+-- Create a new sonar database
+CREATE DATABASE sonar CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+-- Create a local and a remote user
+CREATE USER sonar@localhost IDENTIFIED BY 'sonar';
+CREATE USER sonar@'%' IDENTIFIED BY 'sonar';
+
+-- Grant users permissions
+GRANT ALL ON sonar.* TO sonar@localhost;
+GRANT ALL ON sonar.* TO sonar@'%';
+
+-- Check the results then exit
+use mysql
+SELECT * FROM user WHERE User='sonar'\G
+SELECT * FROM db WHERE User='sonar'\G
+QUIT
